@@ -8,10 +8,15 @@ import {
   Select,
   MenuItem,
   Grid,
+  CircularProgress,
 } from '@mui/material';
 
 import RepoCard from './components/RepoCard';
-import { getStarredRepos, starRepo, unStarRepo } from './utils/localStorageUtils';
+import {
+  getStarredRepos,
+  starRepo,
+  unStarRepo,
+} from './utils/localStorageUtils';
 import { useTrendingRepos } from './hooks/useTrendingRepos';
 
 function App() {
@@ -43,12 +48,38 @@ function App() {
     window.open(repo.html_url, '_blank');
   };
 
-  if (isLoading) return <Typography>Loading...</Typography>;
-  if (error) return <Typography>Error: {error.message}</Typography>;
+  if (isLoading) {
+    return (
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        height="100vh"
+      >
+        <CircularProgress />
+      </Box>
+    );
+  }
+  if (error) {
+    return (
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        height="100vh"
+      >
+        <Typography>Error: {'error'}</Typography>
+      </Box>
+    );
+  }
 
-  const languages = [allLanguagesKey, ...new Set(repos?.map(repo => repo.language).filter(Boolean))];
+  const languages = [
+    allLanguagesKey,
+    ...new Set(repos?.map((repo) => repo.language).filter(Boolean)),
+  ];
 
-  const handleLanguageChange = (event) => setSelectedLanguage(event.target.value);
+  const handleLanguageChange = (event) =>
+    setSelectedLanguage(event.target.value);
 
   const filteredRepos = repos?.filter(
     (repo) =>
