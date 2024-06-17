@@ -4,20 +4,12 @@ This small project renders the list of last week trending repositories on the Gi
 
 ### **Demo link:** [Vercel Build](https://githubtrending.vercel.app/)
 
-## Available Scripts to run
-
 To start project locally, you can run:
 
 ### `yarn start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload if you make edits.\
-
-### `yarn format`
-
-Runs Prettier to format all codes in the project directory. This helps in maintaining a consistent style across your codebase.
 
 ## Project structure
 
